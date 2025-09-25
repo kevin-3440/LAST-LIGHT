@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://cb7rwwonq6pwb"]
+
+[ext_resource type="Texture2D" uid="uid://bllqc4hu1jmnt" path="res://icon.svg" id="1_8ni1g"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_sscnv"]
+a = Vector2(156, 189)
+
+[node name="Xd" type="Skeleton2D"]
+
+[node name="Bone2D" type="Bone2D" parent="."]
+rest = Transform2D(1, 0, 0, 1, 0, 0)
+
+[node name="PhysicalBone2D" type="PhysicalBone2D" parent="Bone2D"]
+mass = 1.82
+linear_velocity = Vector2(2, 0)
+bone2d_nodepath = NodePath("..")
+bone2d_index = 0
+simulate_physics = true
+follow_bone_when_simulating = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bone2D/PhysicalBone2D"]
+shape = SubResource("SegmentShape2D_sscnv")
+
+[node name="Icon" type="Sprite2D" parent="Bone2D/PhysicalBone2D/CollisionShape2D"]
+position = Vector2(68, 73)
+texture = ExtResource("1_8ni1g")
