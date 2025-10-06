@@ -1,0 +1,75 @@
+[gd_scene load_steps=9 format=3 uid="uid://v6v5pgfvfqcm"]
+
+[ext_resource type="Script" uid="uid://dywffrx05h80d" path="res://Guns_Room/bullet.gd" id="1_jixwa"]
+[ext_resource type="Script" uid="uid://couw105c3bde4" path="res://addons/godot_state_charts/state_chart.gd" id="2_7ob8s"]
+[ext_resource type="Script" uid="uid://jk2jm1g6q853" path="res://addons/godot_state_charts/compound_state.gd" id="3_l3pj0"]
+[ext_resource type="Script" uid="uid://cytafq8i1y8qm" path="res://addons/godot_state_charts/atomic_state.gd" id="4_5tue4"]
+[ext_resource type="Script" uid="uid://cf1nsco3w0mf6" path="res://addons/godot_state_charts/transition.gd" id="5_u4jlv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5jx6n"]
+radius = 1.0
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_jixwa"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7ob8s"]
+radius = 3.33333
+
+[node name="Bull" type="Node2D"]
+scale = Vector2(2, 2)
+
+[node name="Bullet" type="StaticBody2D" parent="."]
+position = Vector2(4, 0)
+
+[node name="Bullet" type="CollisionShape2D" parent="Bullet"]
+shape = SubResource("CircleShape2D_5jx6n")
+
+[node name="Bullet_g" type="MeshInstance2D" parent="Bullet/Bullet"]
+unique_name_in_owner = true
+modulate = Color(1, 0.913725, 0.376471, 0.686275)
+texture_filter = 4
+rotation = 1.5708
+scale = Vector2(1.5, 1)
+mesh = SubResource("CapsuleMesh_jixwa")
+script = ExtResource("1_jixwa")
+
+[node name="Colision" type="Area2D" parent="Bullet/Bullet/Bullet_g" groups=["Bullet"]]
+
+[node name="Colision" type="CollisionShape2D" parent="Bullet/Bullet/Bullet_g/Colision" groups=["Bullet"]]
+scale = Vector2(0.5, 1)
+shape = SubResource("CircleShape2D_7ob8s")
+
+[node name="Estado" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_7ob8s")
+metadata/_custom_type_script = "uid://couw105c3bde4"
+
+[node name="Estate" type="Node" parent="Estado"]
+script = ExtResource("3_l3pj0")
+initial_state = NodePath("Start")
+metadata/_custom_type_script = "uid://jk2jm1g6q853"
+
+[node name="Start" type="Node" parent="Estado/Estate"]
+script = ExtResource("4_5tue4")
+metadata/_custom_type_script = "uid://cytafq8i1y8qm"
+
+[node name="Destroy" type="Node" parent="Estado/Estate/Start"]
+script = ExtResource("5_u4jlv")
+to = NodePath("../../Destroy")
+event = &"Destroy"
+delay_in_seconds = "2.0"
+metadata/_custom_type_script = "uid://cf1nsco3w0mf6"
+
+[node name="Bull_Colidd" type="Node" parent="Estado/Estate/Start"]
+script = ExtResource("5_u4jlv")
+to = NodePath("../../Destroy")
+event = &"Bull_Collide"
+delay_in_seconds = "0.0"
+metadata/_custom_type_script = "uid://cf1nsco3w0mf6"
+
+[node name="Destroy" type="Node" parent="Estado/Estate"]
+script = ExtResource("4_5tue4")
+metadata/_custom_type_script = "uid://cytafq8i1y8qm"
+
+[connection signal="area_entered" from="Bullet/Bullet/Bullet_g/Colision" to="Bullet/Bullet/Bullet_g" method="_on_colision_area_entered"]
+[connection signal="state_entered" from="Estado/Estate/Start" to="Bullet/Bullet/Bullet_g" method="_on_start_state_entered"]
+[connection signal="state_entered" from="Estado/Estate/Destroy" to="Bullet/Bullet/Bullet_g" method="_on_destroy_state_entered"]

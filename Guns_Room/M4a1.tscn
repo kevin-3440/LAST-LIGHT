@@ -1,0 +1,85 @@
+[gd_scene load_steps=8 format=3 uid="uid://flaugo3ry2ea"]
+
+[ext_resource type="Texture2D" uid="uid://bq1n6djk1ns83" path="res://Guns_Room/M4Remastered.png" id="2_5grdn"]
+[ext_resource type="Script" uid="uid://dd82mqm8i3gdp" path="res://Guns_Room/bullets.gd" id="2_bgmyd"]
+[ext_resource type="Script" uid="uid://couw105c3bde4" path="res://addons/godot_state_charts/state_chart.gd" id="3_ek0ob"]
+[ext_resource type="Script" uid="uid://jk2jm1g6q853" path="res://addons/godot_state_charts/compound_state.gd" id="4_3ibei"]
+[ext_resource type="Script" uid="uid://cytafq8i1y8qm" path="res://addons/godot_state_charts/atomic_state.gd" id="5_dekdw"]
+[ext_resource type="Script" uid="uid://cf1nsco3w0mf6" path="res://addons/godot_state_charts/transition.gd" id="6_0ei1c"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ek0ob"]
+particle_flag_disable_z = true
+initial_velocity_max = 0.1
+gravity = Vector3(1, 0, 0)
+linear_accel_min = 0.999998
+linear_accel_max = 30.0
+sub_emitter_mode = 4
+sub_emitter_amount_at_start = 3
+
+[node name="M4A1" type="Node2D"]
+z_index = -1
+position = Vector2(10, 0)
+scale = Vector2(0.7, 0.7)
+
+[node name="M4Remastered" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+z_index = 1
+texture_filter = 1
+scale = Vector2(0.07, 0.1)
+texture = ExtResource("2_5grdn")
+offset = Vector2(100, 0)
+flip_v = true
+
+[node name="Bullet" type="Marker2D" parent="M4Remastered"]
+unique_name_in_owner = true
+position = Vector2(328.571, -35)
+scale = Vector2(14.2857, 10)
+script = ExtResource("2_bgmyd")
+
+[node name="Fire_Shoot" type="GPUParticles2D" parent="M4Remastered/Bullet"]
+unique_name_in_owner = true
+modulate = Color(0.99, 0.8415, 0.2475, 1)
+emitting = false
+amount = 12
+lifetime = 0.5
+speed_scale = 5.0
+explosiveness = 1.0
+use_fixed_seed = true
+seed = 2905656377
+fixed_fps = 20
+process_material = SubResource("ParticleProcessMaterial_ek0ob")
+
+[node name="Estate" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("3_ek0ob")
+metadata/_custom_type_script = "uid://couw105c3bde4"
+
+[node name="Fire_space" type="Node" parent="Estate"]
+script = ExtResource("4_3ibei")
+initial_state = NodePath("Repose")
+metadata/_custom_type_script = "uid://jk2jm1g6q853"
+
+[node name="Repose" type="Node" parent="Estate/Fire_space"]
+script = ExtResource("5_dekdw")
+metadata/_custom_type_script = "uid://cytafq8i1y8qm"
+
+[node name="Fire" type="Node" parent="Estate/Fire_space/Repose"]
+script = ExtResource("6_0ei1c")
+to = NodePath("../../Fire")
+event = &"Fire"
+delay_in_seconds = "0.1"
+metadata/_custom_type_script = "uid://cf1nsco3w0mf6"
+
+[node name="Fire" type="Node" parent="Estate/Fire_space"]
+script = ExtResource("5_dekdw")
+metadata/_custom_type_script = "uid://cytafq8i1y8qm"
+
+[node name="Repose" type="Node" parent="Estate/Fire_space/Fire"]
+script = ExtResource("6_0ei1c")
+to = NodePath("../../Repose")
+event = &"Repose"
+delay_in_seconds = "0.0"
+metadata/_custom_type_script = "uid://cf1nsco3w0mf6"
+
+[connection signal="state_processing" from="Estate/Fire_space/Repose" to="M4Remastered/Bullet" method="_on_repose_state_processing"]
+[connection signal="state_processing" from="Estate/Fire_space/Fire" to="M4Remastered/Bullet" method="_on_fire_state_processing"]

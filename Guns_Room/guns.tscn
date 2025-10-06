@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://c2ffmxn1ak5fh"]
+
+[ext_resource type="Texture2D" uid="uid://b3t4isivs04wp" path="res://Guns_Room/M.png" id="1_tlham"]
+[ext_resource type="Script" uid="uid://dd82mqm8i3gdp" path="res://Guns_Room/bullets.gd" id="2_6unnl"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tlham"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(-2, 0, 0)
+emission_shape_scale = Vector3(0, 1, 1)
+spread = 4.3
+initial_velocity_min = 700.0
+initial_velocity_max = 700.0
+gravity = Vector3(0, 0, 0)
+
+[node name="M4A1" type="Node2D"]
+z_index = -1
+position = Vector2(10, 0)
+scale = Vector2(0.7, 0.7)
+
+[node name="m4a1" type="Sprite2D" parent="."]
+texture_filter = 3
+scale = Vector2(0.15, 0.12)
+texture = ExtResource("1_tlham")
+offset = Vector2(40, 0)
+flip_v = true
+
+[node name="Bullet" type="Node2D" parent="."]
+position = Vector2(39.3, -4.8)
+script = ExtResource("2_6unnl")
+
+[node name="Bullets" type="GPUParticles2D" parent="Bullet"]
+unique_name_in_owner = true
+position = Vector2(0, 10.5)
+amount = 5
+lifetime = 0.7
+speed_scale = 1.5
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_tlham")

@@ -1,19 +1,19 @@
-[gd_scene load_steps=27 format=3 uid="uid://eevp7os35c4w"]
+[gd_scene load_steps=28 format=3 uid="uid://eevp7os35c4w"]
 
 [ext_resource type="Script" uid="uid://cbw3cuut0fkmc" path="res://Mobs/Mobs_Scripts/Walter/character_body_2d.gd" id="1_dua7c"]
 [ext_resource type="Texture2D" uid="uid://4d0vox8ira87" path="res://Sprites_Walter/Pepe.png" id="1_l5ynj"]
 [ext_resource type="Texture2D" uid="uid://dx18mhn8kcys0" path="res://Sprites_Walter/Torso.png" id="2_2i6ib"]
 [ext_resource type="Texture2D" uid="uid://cmwhk5nko6en6" path="res://Sprites_Walter/Patotas.png" id="3_2i6ib"]
+[ext_resource type="Texture2D" uid="uid://cs26tc4b7sw7a" path="res://Sprites_Walter/Walter_Skins/Gas_Mask-0.png" id="4_lmvi8"]
 [ext_resource type="Texture2D" uid="uid://dnxran7kpeg7v" path="res://Sprites_Walter/Brazo.png" id="4_rw715"]
 [ext_resource type="Script" uid="uid://couw105c3bde4" path="res://addons/godot_state_charts/state_chart.gd" id="6_74ytv"]
+[ext_resource type="Texture2D" uid="uid://bq1n6djk1ns83" path="res://Guns_Room/M4Remastered.png" id="7_5pj8n"]
 [ext_resource type="Script" uid="uid://jk2jm1g6q853" path="res://addons/godot_state_charts/compound_state.gd" id="7_amkqj"]
 [ext_resource type="Script" uid="uid://cytafq8i1y8qm" path="res://addons/godot_state_charts/atomic_state.gd" id="7_tchdt"]
+[ext_resource type="Script" uid="uid://dd82mqm8i3gdp" path="res://Guns_Room/bullets.gd" id="8_5y5nv"]
 [ext_resource type="Script" uid="uid://cf1nsco3w0mf6" path="res://addons/godot_state_charts/transition.gd" id="8_tchdt"]
-[ext_resource type="Script" uid="uid://d00p18pdy8v4e" path="res://addons/touch_screen_joystick/touch_screen_joystick.gd" id="10_1sbdv"]
 [ext_resource type="Script" uid="uid://bk44e6p64j0c1" path="res://Mobs/Mobs_Scripts/Walter/simetry.gd" id="11_1sbdv"]
 [ext_resource type="Texture2D" uid="uid://bllqc4hu1jmnt" path="res://icon.svg" id="11_lmvi8"]
-
-[sub_resource type="SkeletonModificationStack2D" id="SkeletonModificationStack2D_1sbdv"]
 
 [sub_resource type="Animation" id="Animation_uk5b5"]
 resource_name = "Exaust"
@@ -84,43 +84,43 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Torso/Torso2:frame")
+tracks/1/path = NodePath("Torso/Torso2:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.733),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [1, 2]
+"values": [Vector2(3, 2), Vector2(3, 2)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Torso/Torso2:position")
+tracks/2/path = NodePath("Patotas:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.733),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [Vector2(3, 2), Vector2(3, 3)]
+"values": [9]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Patotas:frame")
+tracks/3/path = NodePath("Torso/Torso2:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
+"update": 0,
+"values": [0.0]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("%Torso2:rotation")
+tracks/4/path = NodePath("Walter:rotation")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -132,86 +132,62 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("%Walter:rotation")
+tracks/5/path = NodePath("Walter:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0]
+"values": [Vector2(0, -10)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("%Walter:position")
+tracks/6/path = NodePath("Torso/Torso2:scale")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, -10)]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("%Torso2:scale")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0, 0.733),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(1.1, 1)]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("%Patotas:scale")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
 "times": PackedFloat32Array(0, 0.733),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(1, 1), Vector2(1, 1)]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Pivot/Brazo:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-1.5708]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Pivot/Brazo:offset")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-3.6, 9)]
+}
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("Pivot/Brazo:rotation")
+tracks/9/path = NodePath("Pivot/Brazo:position")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [-1.5708]
-}
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("Pivot/Brazo:offset")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-3.6, 9)]
-}
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("Pivot/Brazo:position")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
+"values": [Vector2(0, -2)]
 }
 
 [sub_resource type="Animation" id="Animation_q4g8o"]
@@ -232,43 +208,43 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Torso/Torso2:frame")
+tracks/1/path = NodePath("Torso/Torso2:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.733),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [1, 2]
+"values": [Vector2(3, 2), Vector2(3, 2)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Torso/Torso2:position")
+tracks/2/path = NodePath("Patotas:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.733),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [Vector2(3, 2), Vector2(3, 3)]
+"values": [9]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Patotas:frame")
+tracks/3/path = NodePath("Torso/Torso2:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
+"update": 0,
+"values": [0.0]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("%Torso2:rotation")
+tracks/4/path = NodePath("Walter:rotation")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -280,86 +256,62 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("%Walter:rotation")
+tracks/5/path = NodePath("Walter:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0]
+"values": [Vector2(2, -10)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("%Walter:position")
+tracks/6/path = NodePath("Torso/Torso2:scale")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, -10)]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("%Torso2:scale")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0, 0.733),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(1.1, 1)]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("%Patotas:scale")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
 "times": PackedFloat32Array(0, 0.733),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(1, 1), Vector2(1, 1)]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Pivot/Brazo:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-1.5708]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Pivot/Brazo:offset")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3.6, 9)]
+}
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("Pivot/Brazo:rotation")
+tracks/9/path = NodePath("Pivot/Brazo:position")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [-1.5708]
-}
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("Pivot/Brazo:offset")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(3.6, 9)]
-}
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("Pivot/Brazo:position")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-1.2, 0)]
+"values": [Vector2(0, 2)]
 }
 
 [sub_resource type="Animation" id="Animation_tchdt"]
@@ -521,103 +473,103 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Torso/Torso2:frame")
+tracks/3/path = NodePath("Torso/Torso2:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
+"update": 0,
+"values": [Vector2(3, 2)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Torso/Torso2:position")
+tracks/4/path = NodePath("Patotas:frame")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(3, 2)]
+"update": 1,
+"values": [0]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Patotas:frame")
+tracks/5/path = NodePath("Torso/Torso2:rotation")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
+"update": 0,
+"values": [0.113446]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Torso/Torso2:rotation")
+tracks/6/path = NodePath("Walter:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.113446]
+"values": [Vector2(-10, -11)]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("Walter:position")
+tracks/7/path = NodePath("Walter:rotation")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-10, -11)]
+"values": [0.10472]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("Walter:rotation")
+tracks/8/path = NodePath("Torso/Torso2:position")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.10472]
+"values": [Vector2(2, 2)]
 }
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("%Torso2:position")
+tracks/9/path = NodePath("Torso/Torso2:rotation")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(2, 2)]
+"values": [-0.113446]
 }
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("%Torso2:rotation")
+tracks/10/path = NodePath("Torso/Torso2:flip_h")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [-0.113446]
+"update": 1,
+"values": [true]
 }
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("%Torso2:flip_h")
+tracks/11/path = NodePath("Patotas:flip_h")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
@@ -629,118 +581,94 @@ tracks/11/keys = {
 tracks/12/type = "value"
 tracks/12/imported = false
 tracks/12/enabled = true
-tracks/12/path = NodePath("%Patotas:flip_h")
+tracks/12/path = NodePath("Walter:position")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"update": 0,
+"values": [Vector2(10, -11)]
 }
 tracks/13/type = "value"
 tracks/13/imported = false
 tracks/13/enabled = true
-tracks/13/path = NodePath("%Walter:position")
+tracks/13/path = NodePath("Walter:rotation")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(10, -11)]
+"values": [-0.10472]
 }
 tracks/14/type = "value"
 tracks/14/imported = false
 tracks/14/enabled = true
-tracks/14/path = NodePath("%Walter:rotation")
+tracks/14/path = NodePath("Walter:flip_h")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [-0.10472]
+"update": 1,
+"values": [true]
 }
 tracks/15/type = "value"
 tracks/15/imported = false
 tracks/15/enabled = true
-tracks/15/path = NodePath("%Walter:flip_h")
+tracks/15/path = NodePath("Pivot/Brazo:position")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"update": 0,
+"values": [Vector2(-4, -13)]
 }
 tracks/16/type = "value"
 tracks/16/imported = false
 tracks/16/enabled = true
-tracks/16/path = NodePath("Pivot/Brazo:position")
+tracks/16/path = NodePath("Pivot/Brazo:flip_h")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-4, -13)]
+"update": 1,
+"values": [true]
 }
 tracks/17/type = "value"
 tracks/17/imported = false
 tracks/17/enabled = true
-tracks/17/path = NodePath("Pivot/Brazo:flip_h")
+tracks/17/path = NodePath("Pivot/Brazo:rotation")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"update": 0,
+"values": [0.0]
 }
 tracks/18/type = "value"
 tracks/18/imported = false
 tracks/18/enabled = true
-tracks/18/path = NodePath("Pivot/Brazo:rotation")
+tracks/18/path = NodePath("Torso/Torso2:scale")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0]
+"values": [Vector2(1.1, 1)]
 }
 tracks/19/type = "value"
 tracks/19/imported = false
 tracks/19/enabled = true
-tracks/19/path = NodePath("%Torso2:scale")
+tracks/19/path = NodePath("Pivot/Brazo:offset")
 tracks/19/interp = 1
 tracks/19/loop_wrap = true
 tracks/19/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1.1, 1)]
-}
-tracks/20/type = "value"
-tracks/20/imported = false
-tracks/20/enabled = true
-tracks/20/path = NodePath("%Patotas:scale")
-tracks/20/interp = 1
-tracks/20/loop_wrap = true
-tracks/20/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/21/type = "value"
-tracks/21/imported = false
-tracks/21/enabled = true
-tracks/21/path = NodePath("Pivot/Brazo:offset")
-tracks/21/interp = 1
-tracks/21/loop_wrap = true
-tracks/21/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -789,32 +717,32 @@ tracks/2/keys = {
 }
 tracks/3/type = "value"
 tracks/3/imported = false
-tracks/3/enabled = false
-tracks/3/path = NodePath("Walter:position")
+tracks/3/enabled = true
+tracks/3/path = NodePath("Walter:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-10, -11)]
+"values": [0.0]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Walter:rotation")
+tracks/4/path = NodePath("Walter:flip_h")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.10472]
+"update": 1,
+"values": [false]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("%Walter:flip_h")
+tracks/5/path = NodePath("Pivot/Brazo:flip_h")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -826,82 +754,58 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Pivot/Brazo:flip_h")
-tracks/6/interp = 1
+tracks/6/path = NodePath("Pivot/Brazo:position")
+tracks/6/interp = 2
 tracks/6/loop_wrap = true
 tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Torso/Torso2:flip_h")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
 }
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Pivot/Brazo:position")
-tracks/7/interp = 2
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, -2)]
-}
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("%Torso2:flip_h")
+tracks/8/path = NodePath("Walter:position")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [Vector2(2, -10)]
 }
 tracks/9/type = "value"
 tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("%Walter:position")
+tracks/9/enabled = false
+tracks/9/path = NodePath("Pivot/Brazo:rotation")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(4, -10)]
-}
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = false
-tracks/10/path = NodePath("Pivot/Brazo:rotation")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
 "times": PackedFloat32Array(0, 0.266667, 0.533333),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [-0.10472, 0.165806, -0.109956]
 }
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("%Torso2:scale")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
-"times": PackedFloat32Array(0, 0.6),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(1.1, 1)]
-}
-tracks/12/type = "value"
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/path = NodePath("Pivot/Brazo:offset")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/keys = {
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Pivot/Brazo:offset")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -927,7 +831,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = false
-tracks/1/path = NodePath("%Torso2:position")
+tracks/1/path = NodePath("Torso/Torso2:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -939,7 +843,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("%Torso2:rotation")
+tracks/2/path = NodePath("Torso/Torso2:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -951,7 +855,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("%Torso2:flip_h")
+tracks/3/path = NodePath("Torso/Torso2:flip_h")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -963,7 +867,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("%Patotas:flip_h")
+tracks/4/path = NodePath("Patotas:flip_h")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -975,7 +879,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("%Walter:position")
+tracks/5/path = NodePath("Walter:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -987,19 +891,19 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("%Walter:rotation")
+tracks/6/path = NodePath("Walter:rotation")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [-0.10472]
+"values": [0.0]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("%Walter:flip_h")
+tracks/7/path = NodePath("Walter:flip_h")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -1018,7 +922,7 @@ tracks/8/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 6)]
+"values": [Vector2(0, 4)]
 }
 tracks/9/type = "value"
 tracks/9/imported = false
@@ -1035,22 +939,10 @@ tracks/9/keys = {
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("%Torso2:scale")
+tracks/10/path = NodePath("Pivot/Brazo:offset")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
-"times": PackedFloat32Array(0, 0.6),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(1.1, 1)]
-}
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("Pivot/Brazo:offset")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -1124,7 +1016,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("%Walter:flip_h")
+tracks/5/path = NodePath("Walter:flip_h")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -1160,7 +1052,7 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("%Torso2:flip_h")
+tracks/8/path = NodePath("Torso/Torso2:flip_h")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -1172,7 +1064,7 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("%Walter:position")
+tracks/9/path = NodePath("Walter:position")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
@@ -1196,7 +1088,7 @@ tracks/10/keys = {
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("%Torso2:scale")
+tracks/11/path = NodePath("Torso/Torso2:scale")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
@@ -1237,7 +1129,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = false
-tracks/1/path = NodePath("%Torso2:position")
+tracks/1/path = NodePath("Torso/Torso2:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -1249,7 +1141,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("%Torso2:rotation")
+tracks/2/path = NodePath("Torso/Torso2:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -1261,7 +1153,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("%Torso2:flip_h")
+tracks/3/path = NodePath("Torso/Torso2:flip_h")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -1273,7 +1165,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("%Patotas:flip_h")
+tracks/4/path = NodePath("Patotas:flip_h")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -1285,7 +1177,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("%Walter:position")
+tracks/5/path = NodePath("Walter:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -1297,7 +1189,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("%Walter:rotation")
+tracks/6/path = NodePath("Walter:rotation")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -1309,7 +1201,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("%Walter:flip_h")
+tracks/7/path = NodePath("Walter:flip_h")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -1345,7 +1237,7 @@ tracks/9/keys = {
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("%Torso2:scale")
+tracks/10/path = NodePath("Torso/Torso2:scale")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
@@ -1393,29 +1285,36 @@ _data = {
 &"Walk_InteractI": SubResource("Animation_5y5nv")
 }
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ek0ob"]
+particle_flag_disable_z = true
+initial_velocity_max = 0.1
+gravity = Vector3(1, 0, 0)
+linear_accel_min = 0.999998
+linear_accel_max = 30.0
+sub_emitter_mode = 4
+sub_emitter_amount_at_start = 3
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uk5b5"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1sbdv"]
-size = Vector2(200, 200)
-
 [node name="Player_Base" type="Node2D"]
+metadata/_edit_vertical_guides_ = [-71.0]
 
 [node name="Walter" type="CharacterBody2D" parent="."]
 script = ExtResource("1_dua7c")
 
-[node name="Skeleton2D" type="Skeleton2D" parent="Walter"]
-modification_stack = SubResource("SkeletonModificationStack2D_1sbdv")
+[node name="Walt" type="Node2D" parent="Walter"]
 
-[node name="Patotas" type="Sprite2D" parent="Walter/Skeleton2D"]
+[node name="Patotas" type="Sprite2D" parent="Walter/Walt"]
 unique_name_in_owner = true
 texture_filter = 1
-position = Vector2(0, 6)
+position = Vector2(0, 8)
+scale = Vector2(1, 0.8)
 texture = ExtResource("3_2i6ib")
 flip_h = true
 hframes = 4
 vframes = 3
 
-[node name="Walter" type="Sprite2D" parent="Walter/Skeleton2D"]
+[node name="Walter" type="Sprite2D" parent="Walter/Walt"]
 unique_name_in_owner = true
 texture_filter = 1
 position = Vector2(10, -11)
@@ -1425,13 +1324,21 @@ flip_h = true
 hframes = 4
 vframes = 2
 
-[node name="Torso" type="Bone2D" parent="Walter/Skeleton2D"]
-position = Vector2(-3, 4)
-rest = Transform2D(1, 0, 0, 1, -3, 4)
-editor_settings/show_bone_gizmo = false
-
-[node name="Torso2" type="Sprite2D" parent="Walter/Skeleton2D/Torso"]
+[node name="GasMask-0" type="Sprite2D" parent="Walter/Walt/Walter"]
 unique_name_in_owner = true
+visible = false
+position = Vector2(-3, 12)
+rotation = -0.0174533
+scale = Vector2(0.02, 0.017)
+texture = ExtResource("4_lmvi8")
+flip_h = true
+
+[node name="Torso" type="Node2D" parent="Walter/Walt"]
+position = Vector2(-3, 4)
+
+[node name="Torso2" type="Sprite2D" parent="Walter/Walt/Torso"]
+unique_name_in_owner = true
+modulate = Color(0.113191, 0.0574502, 0.395731, 1)
 z_index = -1
 texture_filter = 1
 position = Vector2(2, 2)
@@ -1442,26 +1349,90 @@ flip_h = true
 hframes = 4
 frame = 1
 
-[node name="Corpse" type="AnimationPlayer" parent="Walter/Skeleton2D"]
+[node name="Corpse" type="AnimationPlayer" parent="Walter/Walt"]
 unique_name_in_owner = true
 libraries = {
 &"": SubResource("AnimationLibrary_74ytv")
 }
 
-[node name="Pivot" type="Node2D" parent="Walter/Skeleton2D"]
+[node name="Pivot" type="Node2D" parent="Walter/Walt"]
 unique_name_in_owner = true
 position = Vector2(0, 7)
-rotation = -0.322886
 
-[node name="Brazo" type="Sprite2D" parent="Walter/Skeleton2D/Pivot"]
+[node name="Brazo" type="Sprite2D" parent="Walter/Walt/Pivot"]
 unique_name_in_owner = true
 texture_filter = 1
 position = Vector2(-4, -13)
-scale = Vector2(0.7, 0.5)
+scale = Vector2(0.7, 0.4)
 texture = ExtResource("4_rw715")
 offset = Vector2(3.6, 9)
 flip_h = true
 hframes = 4
+
+[node name="M4A1" type="Node2D" parent="Walter/Walt/Pivot"]
+z_index = -1
+position = Vector2(10, 0)
+scale = Vector2(0.7, 0.7)
+
+[node name="M4Remastered" type="Sprite2D" parent="Walter/Walt/Pivot/M4A1"]
+unique_name_in_owner = true
+z_index = 1
+texture_filter = 1
+scale = Vector2(0.07, 0.1)
+texture = ExtResource("7_5pj8n")
+offset = Vector2(100, 0)
+flip_v = true
+
+[node name="Bullet" type="Marker2D" parent="Walter/Walt/Pivot/M4A1/M4Remastered"]
+unique_name_in_owner = true
+position = Vector2(328.571, -35)
+scale = Vector2(14.2857, 10)
+script = ExtResource("8_5y5nv")
+
+[node name="Fire_Shoot" type="GPUParticles2D" parent="Walter/Walt/Pivot/M4A1/M4Remastered/Bullet"]
+unique_name_in_owner = true
+modulate = Color(0.99, 0.8415, 0.2475, 1)
+emitting = false
+amount = 12
+lifetime = 0.5
+speed_scale = 5.0
+explosiveness = 1.0
+use_fixed_seed = true
+seed = 2905656377
+fixed_fps = 20
+process_material = SubResource("ParticleProcessMaterial_ek0ob")
+
+[node name="Estate" type="Node" parent="Walter/Walt/Pivot/M4A1"]
+unique_name_in_owner = true
+script = ExtResource("6_74ytv")
+metadata/_custom_type_script = "uid://couw105c3bde4"
+
+[node name="Fire_space" type="Node" parent="Walter/Walt/Pivot/M4A1/Estate"]
+script = ExtResource("7_amkqj")
+initial_state = NodePath("Repose")
+metadata/_custom_type_script = "uid://jk2jm1g6q853"
+
+[node name="Repose" type="Node" parent="Walter/Walt/Pivot/M4A1/Estate/Fire_space"]
+script = ExtResource("7_tchdt")
+metadata/_custom_type_script = "uid://cytafq8i1y8qm"
+
+[node name="Fire" type="Node" parent="Walter/Walt/Pivot/M4A1/Estate/Fire_space/Repose"]
+script = ExtResource("8_tchdt")
+to = NodePath("../../Fire")
+event = &"Fire"
+delay_in_seconds = "0.1"
+metadata/_custom_type_script = "uid://cf1nsco3w0mf6"
+
+[node name="Fire" type="Node" parent="Walter/Walt/Pivot/M4A1/Estate/Fire_space"]
+script = ExtResource("7_tchdt")
+metadata/_custom_type_script = "uid://cytafq8i1y8qm"
+
+[node name="Repose" type="Node" parent="Walter/Walt/Pivot/M4A1/Estate/Fire_space/Fire"]
+script = ExtResource("8_tchdt")
+to = NodePath("../../Repose")
+event = &"Repose"
+delay_in_seconds = "0.0"
+metadata/_custom_type_script = "uid://cf1nsco3w0mf6"
 
 [node name="Estados_Base" type="Node" parent="Walter"]
 unique_name_in_owner = true
@@ -1526,86 +1497,32 @@ event = &"To_idle"
 delay_in_seconds = "0.0"
 metadata/_custom_type_script = "uid://cf1nsco3w0mf6"
 
-[node name="Eyes" type="Camera2D" parent="Walter"]
+[node name="Camera" type="Camera2D" parent="Walter"]
 texture_filter = 5
-position = Vector2(0, -1)
-zoom = Vector2(1.7, 1.7)
+position = Vector2(0, 15)
+zoom = Vector2(0.7, 0.6)
 limit_smoothed = true
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 
 [node name="Box" type="CollisionShape2D" parent="Walter"]
-visible = false
-position = Vector2(0, 21)
+position = Vector2(0, 17)
 shape = SubResource("CapsuleShape2D_uk5b5")
-
-[node name="Joys" type="CanvasLayer" parent="."]
-
-[node name="Control" type="Control" parent="Joys"]
-top_level = true
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -1.0
-offset_right = -551.0
-offset_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Joys" type="Control" parent="Joys"]
-layout_mode = 3
-anchors_preset = 0
-offset_top = 402.0
-offset_right = 382.0
-offset_bottom = 599.0
-script = ExtResource("10_1sbdv")
-antialiased = true
-use_input_actions = true
-metadata/_custom_type_script = "uid://d00p18pdy8v4e"
-
-[node name="Point" type="Control" parent="Joys"]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 754.0
-offset_top = 403.0
-offset_right = 1136.0
-offset_bottom = 600.0
-script = ExtResource("10_1sbdv")
-antialiased = true
-deadzone = 12.0
-use_input_actions = true
-action_left = &"ui_A"
-action_right = &"ui_D"
-action_up = &"ui_W"
-action_down = &"ui_S"
-metadata/_custom_type_script = "uid://d00p18pdy8v4e"
-
-[node name="Int" type="TouchScreenButton" parent="Joys"]
-visible = false
-position = Vector2(1000, 500)
-shape = SubResource("RectangleShape2D_1sbdv")
-action = "ui_accept"
-
-[node name="Int" type="Label" parent="Joys/Int"]
-texture_filter = 1
-offset_left = -99.0
-offset_top = -101.0
-offset_right = -74.0
-offset_bottom = -76.0
-scale = Vector2(8, 8)
-text = "Int"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="cursor" type="Node2D" parent="."]
 script = ExtResource("11_1sbdv")
 
 [node name="Curs" type="Sprite2D" parent="cursor"]
 unique_name_in_owner = true
+visible = false
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("11_lmvi8")
 
+[node name="Puntero" type="Marker2D" parent="."]
+unique_name_in_owner = true
+
+[connection signal="state_processing" from="Walter/Walt/Pivot/M4A1/Estate/Fire_space/Repose" to="Walter/Walt/Pivot/M4A1/M4Remastered/Bullet" method="_on_repose_state_processing"]
+[connection signal="state_processing" from="Walter/Walt/Pivot/M4A1/Estate/Fire_space/Fire" to="Walter/Walt/Pivot/M4A1/M4Remastered/Bullet" method="_on_fire_state_processing"]
 [connection signal="state_processing" from="Walter/Estados_Base/CompoundState/Idle" to="Walter" method="_on_idle_state_processing"]
 [connection signal="state_entered" from="Walter/Estados_Base/CompoundState/Interact" to="Walter" method="_on_interact_state_entered"]
 [connection signal="state_processing" from="Walter/Estados_Base/CompoundState/Interact" to="Walter" method="_on_interact_state_processing"]
